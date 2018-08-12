@@ -1,0 +1,8 @@
+extends pug/base
+include pug/mixins/folds
+
+prepend vars
+	- title = 'Абильдин Асан | Тестовое задание'
+
+block content
+	+folds()

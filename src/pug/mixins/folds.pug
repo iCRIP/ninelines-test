@@ -1,0 +1,61 @@
+mixin folds()
+	-
+		var data = {
+			name: 'Абильдин Асан',
+			bornDate: '15.10.1993',
+			city: 'Алматы',
+			contacts: 'crip@list.ru'
+		}
+	-
+		var skills = [
+			{value: 'Html5', checked: true},
+			{value: 'SASS', checked: true},
+			{value: 'vANILLAJS', checked: false},
+			{value: 'GIT', checked: true},
+			{value: 'css3', checked: true},
+			{value: 'LESS', checked: false},
+			{value: 'aNGULAR', checked: true},
+			{value: 'fOUNDATION', checked: false},
+			{value: 'БЭМ', checked: true},
+			{value: 'gULP', checked: true},
+			{value: 'JQUERY', checked: true},
+			{value: 'BOOTSTRAP', checked: true},
+		]
+
+	main.folds
+		//- FOLD info
+		section.grid-container
+			.fold.grid-x.grid-padding-x
+				.medium-2.small-auto.cell
+					.info__img
+						img(src="images/photo.png" alt=data.name width="140px" height="140px")
+				.medium-6.small-8.cell
+					.info__desc
+						each val in data
+							.info__line=val
+				.fold__approved
+		//- FOLD 2 skills
+		section.grid-container
+			.fold.grid-x.grid-padding-x
+				.medium-8.cell
+					h2.fold__title Навыки
+					.skills.grid-x.grid-padding-x
+						each skill, index in skills
+							.skill.medium-2.small-4.cell
+								input.skill__check(type="checkbox" id='skill-'+index value=skill.value checked=skill.checked)
+								label.skill__label(for='skill-'+index)= skill.value
+		//- JS Meter
+		section.grid-container
+			.fold.grid-x.grid-padding-x.meter__wrap
+				.medium-4.small-auto.cell.shrink.meter__wrap
+					.meter
+						img(src="images/Meter.svg", alt="Js Meter")
+						.meter__arrow.
+							<svg id="Meter" xmlns="http://www.w3.org/2000/svg" width="253.031" height="133.031" viewBox="0 0 253.031 133.031">
+								<path class="meter__arrow__path" d="M329.273,745.717a9.054,9.054,0,0,1-8.889,9.437L265.5,748.077l54.267-11.5h0a9.469,9.469,0,0,1,9.509,9.143h0Z" transform="translate(-190 -621.969)"/>
+							</svg>
+
+				.medium-4.small-8.cell
+					h2.fold__title Мой уровень владения<br>Java Script
+					.meter__counter(data-from="0" data-to="954" data-max="1000") 0
+
